@@ -63,45 +63,39 @@ export function CanvasElementComponent({
 				});
 			} else if (isResizing && resizeDirection) {
 				e.preventDefault();
-				requestAnimationFrame(() => {
-					const dx = e.clientX - initialPos.x;
-					const dy = e.clientY - initialPos.y;
+				const dx = e.clientX - initialPos.x;
+				const dy = e.clientY - initialPos.y;
 
-					let newWidth = initialSize.width;
-					let newHeight = initialSize.height;
-					let newX = element.x;
-					let newY = element.y;
+				let newWidth = initialSize.width;
+				let newHeight = initialSize.height;
+				let newX = element.x;
+				let newY = element.y;
 
-					if (resizeDirection.includes("right")) {
-						newWidth = Math.max(50, initialSize.width + dx);
-					}
-					if (resizeDirection.includes("left")) {
-						const adjustedWidth = Math.max(
-							50,
-							initialSize.width - dx,
-						);
-						newX = element.x + (initialSize.width - adjustedWidth);
-						newWidth = adjustedWidth;
-					}
-					if (resizeDirection.includes("bottom")) {
-						newHeight = Math.max(50, initialSize.height + dy);
-					}
-					if (resizeDirection.includes("top")) {
-						const adjustedHeight = Math.max(
-							50,
-							initialSize.height - dy,
-						);
-						newY =
-							element.y + (initialSize.height - adjustedHeight);
-						newHeight = adjustedHeight;
-					}
+				if (resizeDirection.includes("right")) {
+					newWidth = Math.max(50, initialSize.width + dx);
+				}
+				if (resizeDirection.includes("left")) {
+					const adjustedWidth = Math.max(50, initialSize.width - dx);
+					newX = element.x + (initialSize.width - adjustedWidth);
+					newWidth = adjustedWidth;
+				}
+				if (resizeDirection.includes("bottom")) {
+					newHeight = Math.max(50, initialSize.height + dy);
+				}
+				if (resizeDirection.includes("top")) {
+					const adjustedHeight = Math.max(
+						50,
+						initialSize.height - dy,
+					);
+					newY = element.y + (initialSize.height - adjustedHeight);
+					newHeight = adjustedHeight;
+				}
 
-					setResizeOverlay({
-						width: newWidth,
-						height: newHeight,
-						x: newX,
-						y: newY,
-					});
+				setResizeOverlay({
+					width: newWidth,
+					height: newHeight,
+					x: newX,
+					y: newY,
 				});
 			}
 		},
@@ -142,45 +136,39 @@ export function CanvasElementComponent({
 				});
 			} else if (isResizing && resizeDirection) {
 				e.preventDefault();
-				requestAnimationFrame(() => {
-					const dx = e.clientX - initialPos.x;
-					const dy = e.clientY - initialPos.y;
+				const dx = e.clientX - initialPos.x;
+				const dy = e.clientY - initialPos.y;
 
-					let newWidth = initialSize.width;
-					let newHeight = initialSize.height;
-					let newX = element.x;
-					let newY = element.y;
+				let newWidth = initialSize.width;
+				let newHeight = initialSize.height;
+				let newX = element.x;
+				let newY = element.y;
 
-					if (resizeDirection.includes("right")) {
-						newWidth = Math.max(50, initialSize.width + dx);
-					}
-					if (resizeDirection.includes("left")) {
-						const adjustedWidth = Math.max(
-							50,
-							initialSize.width - dx,
-						);
-						newX = element.x + (initialSize.width - adjustedWidth);
-						newWidth = adjustedWidth;
-					}
-					if (resizeDirection.includes("bottom")) {
-						newHeight = Math.max(50, initialSize.height + dy);
-					}
-					if (resizeDirection.includes("top")) {
-						const adjustedHeight = Math.max(
-							50,
-							initialSize.height - dy,
-						);
-						newY =
-							element.y + (initialSize.height - adjustedHeight);
-						newHeight = adjustedHeight;
-					}
+				if (resizeDirection.includes("right")) {
+					newWidth = Math.max(50, initialSize.width + dx);
+				}
+				if (resizeDirection.includes("left")) {
+					const adjustedWidth = Math.max(50, initialSize.width - dx);
+					newX = element.x + (initialSize.width - adjustedWidth);
+					newWidth = adjustedWidth;
+				}
+				if (resizeDirection.includes("bottom")) {
+					newHeight = Math.max(50, initialSize.height + dy);
+				}
+				if (resizeDirection.includes("top")) {
+					const adjustedHeight = Math.max(
+						50,
+						initialSize.height - dy,
+					);
+					newY = element.y + (initialSize.height - adjustedHeight);
+					newHeight = adjustedHeight;
+				}
 
-					setResizeOverlay({
-						width: newWidth,
-						height: newHeight,
-						x: newX,
-						y: newY,
-					});
+				setResizeOverlay({
+					width: newWidth,
+					height: newHeight,
+					x: newX,
+					y: newY,
 				});
 			}
 		};
@@ -236,6 +224,7 @@ export function CanvasElementComponent({
 					height: element.height,
 					transition:
 						isDragging || isResizing ? "none" : "all 0.1s ease",
+					transform: "translate3d(0,0,0)",
 				}}
 				onMouseDown={handleDragStart}
 			>
